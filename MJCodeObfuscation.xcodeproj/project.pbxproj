@@ -27,6 +27,16 @@
 		2DCF3D7521257FB000E32B33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF3D7421257FB000E32B33 /* main.m */; };
 		2DCF3D972125873A00E32B33 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF3D8F2125873A00E32B33 /* NSString+Extension.m */; };
 		2DCF3D9A21259B0500E32B33 /* NSFileManager+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF3D9921259B0500E32B33 /* NSFileManager+Extension.m */; };
+		5195BCCC2185834B0057E846 /* HGJunkCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCCB2185834B0057E846 /* HGJunkCodeController.m */; };
+		5195BCCF2185E7D10057E846 /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCCE2185E7D10057E846 /* NSArray+Extension.m */; };
+		5195BCD52185E8D20057E846 /* HGBaseClientData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCD42185E8D20057E846 /* HGBaseClientData.m */; };
+		5195BCD82185E8E50057E846 /* HGBaseClientNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCD72185E8E50057E846 /* HGBaseClientNode.m */; };
+		5195BCDC2185E9920057E846 /* HGJunkCodeClientData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCDB2185E9920057E846 /* HGJunkCodeClientData.m */; };
+		5195BCDF2185E9BE0057E846 /* HGJunkCodeClientNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCDE2185E9BE0057E846 /* HGJunkCodeClientNode.m */; };
+		5195BCE22185EE0D0057E846 /* HGMethodDeclData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCE12185EE0D0057E846 /* HGMethodDeclData.m */; };
+		5195BCE52185EE750057E846 /* HGJunkCodeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195BCE42185EE750057E846 /* HGJunkCodeBuilder.m */; };
+		5195BCE72185F2F40057E846 /* HGDeclMethodCall.tpl in Resources */ = {isa = PBXBuildFile; fileRef = 5195BCE62185F2F40057E846 /* HGDeclMethodCall.tpl */; };
+		5195BCE92185F3100057E846 /* HGDeclMethodDecl.tpl in Resources */ = {isa = PBXBuildFile; fileRef = 5195BCE82185F3100057E846 /* HGDeclMethodDecl.tpl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +80,24 @@
 		2DCF3D8F2125873A00E32B33 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		2DCF3D9821259B0500E32B33 /* NSFileManager+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Extension.h"; sourceTree = "<group>"; };
 		2DCF3D9921259B0500E32B33 /* NSFileManager+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Extension.m"; sourceTree = "<group>"; };
+		5195BCCA2185834B0057E846 /* HGJunkCodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGJunkCodeController.h; sourceTree = "<group>"; };
+		5195BCCB2185834B0057E846 /* HGJunkCodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGJunkCodeController.m; sourceTree = "<group>"; };
+		5195BCCD2185E7D10057E846 /* NSArray+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extension.h"; sourceTree = "<group>"; };
+		5195BCCE2185E7D10057E846 /* NSArray+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extension.m"; sourceTree = "<group>"; };
+		5195BCD32185E8D20057E846 /* HGBaseClientData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBaseClientData.h; sourceTree = "<group>"; };
+		5195BCD42185E8D20057E846 /* HGBaseClientData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBaseClientData.m; sourceTree = "<group>"; };
+		5195BCD62185E8E50057E846 /* HGBaseClientNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGBaseClientNode.h; sourceTree = "<group>"; };
+		5195BCD72185E8E50057E846 /* HGBaseClientNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGBaseClientNode.m; sourceTree = "<group>"; };
+		5195BCDA2185E9920057E846 /* HGJunkCodeClientData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGJunkCodeClientData.h; sourceTree = "<group>"; };
+		5195BCDB2185E9920057E846 /* HGJunkCodeClientData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGJunkCodeClientData.m; sourceTree = "<group>"; };
+		5195BCDD2185E9BE0057E846 /* HGJunkCodeClientNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGJunkCodeClientNode.h; sourceTree = "<group>"; };
+		5195BCDE2185E9BE0057E846 /* HGJunkCodeClientNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGJunkCodeClientNode.m; sourceTree = "<group>"; };
+		5195BCE02185EE0D0057E846 /* HGMethodDeclData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGMethodDeclData.h; sourceTree = "<group>"; };
+		5195BCE12185EE0D0057E846 /* HGMethodDeclData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGMethodDeclData.m; sourceTree = "<group>"; };
+		5195BCE32185EE750057E846 /* HGJunkCodeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGJunkCodeBuilder.h; sourceTree = "<group>"; };
+		5195BCE42185EE750057E846 /* HGJunkCodeBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGJunkCodeBuilder.m; sourceTree = "<group>"; };
+		5195BCE62185F2F40057E846 /* HGDeclMethodCall.tpl */ = {isa = PBXFileReference; lastKnownFileType = text; path = HGDeclMethodCall.tpl; sourceTree = "<group>"; };
+		5195BCE82185F3100057E846 /* HGDeclMethodDecl.tpl */ = {isa = PBXFileReference; lastKnownFileType = text; path = HGDeclMethodDecl.tpl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +119,8 @@
 				2D3716D82128031200A5F250 /* MJCodeViewController.m */,
 				2D3716D4212802E200A5F250 /* MJStringViewController.h */,
 				2D3716D5212802E200A5F250 /* MJStringViewController.m */,
+				5195BCCA2185834B0057E846 /* HGJunkCodeController.h */,
+				5195BCCB2185834B0057E846 /* HGJunkCodeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,6 +134,8 @@
 				2D3716E6212816C200A5F250 /* MJEncryptStringM.tpl */,
 				2D3716FA2129743E00A5F250 /* MJEncryptStringDataH.tpl */,
 				2D3716FB2129743E00A5F250 /* MJEncryptStringDataM.tpl */,
+				5195BCE62185F2F40057E846 /* HGDeclMethodCall.tpl */,
+				5195BCE82185F3100057E846 /* HGDeclMethodDecl.tpl */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -146,6 +178,7 @@
 		2D8FF87B2126FCD600950CF4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5195BCD02185E8A60057E846 /* Model */,
 				2D3716D3212802BF00A5F250 /* Controller */,
 				2D8FF87D2126FD4000950CF4 /* Category */,
 				2D7B478A2126C436006D5755 /* clang-c */,
@@ -176,6 +209,8 @@
 				2DCF3D8F2125873A00E32B33 /* NSString+Extension.m */,
 				2DCF3D9821259B0500E32B33 /* NSFileManager+Extension.h */,
 				2DCF3D9921259B0500E32B33 /* NSFileManager+Extension.m */,
+				5195BCCD2185E7D10057E846 /* NSArray+Extension.h */,
+				5195BCCE2185E7D10057E846 /* NSArray+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -216,6 +251,49 @@
 				2D7B47992126D3C3006D5755 /* MJObfuscationTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		5195BCD02185E8A60057E846 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5195BCD12185E8AD0057E846 /* ClientData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5195BCD12185E8AD0057E846 /* ClientData */ = {
+			isa = PBXGroup;
+			children = (
+				5195BCD22185E8BB0057E846 /* Base */,
+				5195BCD92185E9690057E846 /* JunkCode */,
+			);
+			path = ClientData;
+			sourceTree = "<group>";
+		};
+		5195BCD22185E8BB0057E846 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5195BCD32185E8D20057E846 /* HGBaseClientData.h */,
+				5195BCD42185E8D20057E846 /* HGBaseClientData.m */,
+				5195BCD62185E8E50057E846 /* HGBaseClientNode.h */,
+				5195BCD72185E8E50057E846 /* HGBaseClientNode.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5195BCD92185E9690057E846 /* JunkCode */ = {
+			isa = PBXGroup;
+			children = (
+				5195BCDA2185E9920057E846 /* HGJunkCodeClientData.h */,
+				5195BCDB2185E9920057E846 /* HGJunkCodeClientData.m */,
+				5195BCDD2185E9BE0057E846 /* HGJunkCodeClientNode.h */,
+				5195BCDE2185E9BE0057E846 /* HGJunkCodeClientNode.m */,
+				5195BCE02185EE0D0057E846 /* HGMethodDeclData.h */,
+				5195BCE12185EE0D0057E846 /* HGMethodDeclData.m */,
+				5195BCE32185EE750057E846 /* HGJunkCodeBuilder.h */,
+				5195BCE42185EE750057E846 /* HGJunkCodeBuilder.m */,
+			);
+			path = JunkCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +364,9 @@
 				2D3716F92128553E00A5F250 /* MJEncryptStringDataHUnit.tpl in Resources */,
 				2D3716E9212816D600A5F250 /* MJEncryptStringM.tpl in Resources */,
 				2D3716E32128165200A5F250 /* MJEncryptStringDataMUnit.tpl in Resources */,
+				5195BCE72185F2F40057E846 /* HGDeclMethodCall.tpl in Resources */,
 				2DCF3D6F21257FB000E32B33 /* Assets.xcassets in Resources */,
+				5195BCE92185F3100057E846 /* HGDeclMethodDecl.tpl in Resources */,
 				2DCF3D7221257FB000E32B33 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,17 +378,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5195BCE52185EE750057E846 /* HGJunkCodeBuilder.m in Sources */,
 				2D7B47942126C44F006D5755 /* MJClangTool.m in Sources */,
 				2D3716E1212813CA00A5F250 /* MJTextView.m in Sources */,
+				5195BCDF2185E9BE0057E846 /* HGJunkCodeClientNode.m in Sources */,
 				2D3716EE2128294A00A5F250 /* MJDividerView.m in Sources */,
 				2D7B47892126BE5F006D5755 /* MJTextField.m in Sources */,
 				2D3716DA2128031200A5F250 /* MJCodeViewController.m in Sources */,
+				5195BCCF2185E7D10057E846 /* NSArray+Extension.m in Sources */,
+				5195BCD82185E8E50057E846 /* HGBaseClientNode.m in Sources */,
 				2DCF3D7521257FB000E32B33 /* main.m in Sources */,
 				2DCF3D9A21259B0500E32B33 /* NSFileManager+Extension.m in Sources */,
 				2D7B479A2126D3C3006D5755 /* MJObfuscationTool.m in Sources */,
 				2DCF3D972125873A00E32B33 /* NSString+Extension.m in Sources */,
 				2DCF3D6A21257FAF00E32B33 /* AppDelegate.m in Sources */,
+				5195BCE22185EE0D0057E846 /* HGMethodDeclData.m in Sources */,
+				5195BCDC2185E9920057E846 /* HGJunkCodeClientData.m in Sources */,
 				2D3716D6212802E200A5F250 /* MJStringViewController.m in Sources */,
+				5195BCD52185E8D20057E846 /* HGBaseClientData.m in Sources */,
+				5195BCCC2185834B0057E846 /* HGJunkCodeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

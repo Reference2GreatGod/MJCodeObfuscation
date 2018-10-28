@@ -10,6 +10,7 @@
 #import "NSString+Extension.h"
 #import "NSFileManager+Extension.h"
 #import "MJClangTool.h"
+#import "NSArray+Extension.h"
 
 #define MJEncryptKeyVar @"#var#"
 #define MJEncryptKeyComment @"#comment#"
@@ -168,6 +169,8 @@
             obfuscation = [NSString mj_randomStringWithoutDigitalWithLength:16];
         }
         
+        [obfuscations addObject:obfuscation];
+        
         [fileContent appendFormat:@"#define %@ %@", token, obfuscation];
         
         if (++index != set.count) {
@@ -177,6 +180,42 @@
     
     !progress ? : progress(@"混淆完毕!");
     completion(fileContent);
+}
+
+/** 花指令 */
++ (void)junkCodeAtDir:(NSString *)dir
+             progress:(void (^)(NSString *detail))progress
+           completion:(void (^)(NSString *tips))completion {
+    if (dir.length == 0 || !completion) return;
+    
+    !progress ? : progress(@"正在扫描目录...");
+    
+    NSArray *subpaths = [NSFileManager mj_subpathsAtPath:dir extensions:@[@"m", @"mm"]];
+    
+    // 文件原大小
+    NSUInteger orgFileSize = [subpaths hg_fileSize];
+    
+    !progress ? : progress(@"正在添加花指令...");
+    
+    for (NSString *subpath in subpaths) {
+        !progress ? : progress([NSString stringWithFormat:@"开始分析：%@", subpath.lastPathComponent]);
+        [MJClangTool junkCodeWithFile:subpath prefixes:@[] searchPath:dir];
+        !progress ? : progress([NSString stringWithFormat:@"结束分析：%@", subpath.lastPathComponent]);
+    }
+    
+    NSUInteger newFileSize = [subpaths hg_fileSize];
+    
+    NSUInteger fileSize = newFileSize - orgFileSize;
+    NSString* tips = [NSString stringWithFormat:@"共修改 %zd 个文件\n", subpaths.count];
+    if (fileSize > 1024) {
+        tips = [NSString stringWithFormat:@"%@修改前文件总共大小 %zd字节(%0.02fkb) \n修改后文件总共大小 %zd字节(%0.02fkb)\n成功添加 %0.02fkb 的大小", tips, orgFileSize, orgFileSize/1024.0, newFileSize, newFileSize/1024.0, fileSize/1024.0];
+    } else {
+        tips = [NSString stringWithFormat:@"%@修改前文件总共大小 %zd字节(%0.02fkb) \n修改后文件总共大小 %zd字节(%0.02fkb)\n成功添加 %zd字节 的大小", tips, orgFileSize, orgFileSize/1024.0, newFileSize, newFileSize/1024.0, fileSize];
+    }
+    
+    completion(tips);
+    
+    !progress ? : progress(@"花指令加入完毕!");
 }
 
 @end

@@ -25,4 +25,15 @@
               progress:(void (^)(NSString *detail))progress
             completion:(void (^)(NSString *fileContent))completion;
 
+/**
+ 花指令|代码混淆
+ 
+ @param dir 文件名|文件夹
+ @param progress 进度
+ @param completion 回调
+ */
++ (void)junkCodeAtDir:(NSString *)dir
+             progress:(void (^)(NSString *detail))progress
+           completion:(void (^)(NSString *tips))completion;
+
 @end

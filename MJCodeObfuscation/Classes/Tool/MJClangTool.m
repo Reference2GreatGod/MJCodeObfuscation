@@ -11,6 +11,7 @@
 #import "NSFileManager+Extension.h"
 #import "NSString+Extension.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "HGJunkCodeClientData.h"
 
 /** 类名、方法名 */
 @interface MJTokensClientData : NSObject
@@ -79,6 +80,90 @@ enum CXChildVisitResult _visitTokens(CXCursor cursor,
     return CXChildVisit_Recurse;
 }
 
+// 花指令
+enum CXChildVisitResult _visitJunkCodes(CXCursor cursor,
+                                        CXCursor parent,
+                                        CXClientData clientData) {
+    if (clientData == NULL) return CXChildVisit_Break;
+    
+    HGJunkCodeClientData *data = (__bridge HGJunkCodeClientData *)clientData;
+    if (!_isFromFile(data.file.UTF8String, cursor)) return CXChildVisit_Continue;
+    
+    // 仅仅是这些种类的节点才进行花指令处理
+    if (cursor.kind == CXCursor_ObjCImplementationDecl ||
+        cursor.kind == CXCursor_ObjCInstanceMethodDecl ||
+        cursor.kind == CXCursor_ObjCClassMethodDecl ||
+        cursor.kind ==  CXCursor_ObjCPropertyDecl ||
+        cursor.kind == CXCursor_ObjCIvarDecl) {
+        
+        // 肯定是英文的不用转
+        NSString *name = [NSString stringWithUTF8String:_getCursorName(cursor)];
+        // 为了找到插入代码的那一行
+        CXSourceRange range = clang_getCursorExtent(cursor);
+        CXSourceLocation startLocation = clang_getRangeStart(range);
+        CXSourceLocation endLocation = clang_getRangeEnd(range);
+        
+        // 偏移量
+        unsigned startOffset;
+        unsigned endOffset;
+        clang_getFileLocation(startLocation, NULL, NULL, NULL, &startOffset);
+        clang_getSpellingLocation(endLocation, NULL, NULL, NULL, &endOffset);
+        // 当前节点的内容描述
+        NSData* fileData = [data.fileData subdataWithRange:NSMakeRange(startOffset, endOffset-startOffset)];
+        NSString* declString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+        
+        // 节点
+        HGJunkCodeClientNode* node = [HGJunkCodeClientNode new];
+        
+        if (cursor.kind == CXCursor_ObjCImplementationDecl) {
+            // 会找到 name 第一次出现的位置
+            NSRange implDeclRang = [declString rangeOfString:name];
+            // 在 startOffset ~ startOffset+implDeclRang.location+implDeclRang.length; 的这个区间不可能出现非英文字符
+            // 所以正确的位置就是: startOffset+implDeclRang.location+implDeclRang.length;
+            node.offset = (unsigned)(startOffset+implDeclRang.location+implDeclRang.length);
+            node.jcType = HGJCTypeImplementationDecl;
+        } else if (cursor.kind == CXCursor_ObjCInstanceMethodDecl || cursor.kind == CXCursor_ObjCClassMethodDecl) {
+            // 会找到 { 第一次出现的位置
+            NSRange methodRang = [declString rangeOfString:@"{"];
+            // 如果是属性没有重写 setter | getter 的情况, 会出现找不到的情况
+            if (methodRang.location != NSNotFound) {
+                node.offset = (unsigned)(startOffset+methodRang.location+methodRang.length);
+                node.jcType = (cursor.kind == CXCursor_ObjCInstanceMethodDecl)?HGJCTypeInstanceMethodDecl:HGJCTypeClassMethodDecl;
+            }
+        } else if (cursor.kind ==  CXCursor_ObjCPropertyDecl || cursor.kind == CXCursor_ObjCIvarDecl) {
+            fileData = [data.fileData subdataWithRange:NSMakeRange(startOffset, data.file_int_data_length-startOffset)];
+            NSString* declString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+            
+            // 会找到 ; 第一次出现的位置
+            NSRange maohaoRang = [declString rangeOfString:@";"];
+            node.offset = (unsigned)(startOffset+maohaoRang.location+maohaoRang.length);
+            node.jcType = (cursor.kind ==  CXCursor_ObjCPropertyDecl)?HGJCTypePropertyDecl:HGJCTypeIvarDecl;
+            
+            { // 上面的 declString 主要是为了找到对应的 ;, 接下来的主要是为了记录
+                fileData = [data.fileData subdataWithRange:NSMakeRange(startOffset, endOffset-startOffset)];
+                declString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+                node.declString = declString;
+            }
+        }
+        
+        if ((node.offset != NSNotFound) || !name) {
+            node.name = name;
+            [data.nodes addObject:node];
+            
+            // 每个成员变量与属性对应一个垃圾节点
+            if ((node.jcType == HGJCTypePropertyDecl) || (node.jcType == HGJCTypeIvarDecl)) {
+                NSString* obfuscation = nil;
+                while (!obfuscation || [data.obfuscations containsObject:obfuscation]) {
+                    obfuscation = [NSString mj_randomStringWithoutDigitalWithLength:10];
+                }
+                [data.obfuscations addObject:obfuscation];
+            }
+        }
+    }
+    
+    return CXChildVisit_Recurse;
+}
+
 enum CXChildVisitResult _visitStrings(CXCursor cursor,
                                       CXCursor parent,
                                       CXClientData clientData) {
@@ -123,6 +208,22 @@ enum CXChildVisitResult _visitStrings(CXCursor cursor,
                     visitor:_visitTokens
                  clientData:(__bridge void *)data];
     return data.tokens;
+}
+
+/** 花指令 */
++ (BOOL)junkCodeWithFile:(NSString *)file
+                prefixes:(NSArray *)prefixes
+              searchPath:(NSString *)searchPath {
+    HGJunkCodeClientData* data = [HGJunkCodeClientData new];
+    data.file = file;
+    data.prefixes = prefixes;
+    data.nodes = [NSMutableArray array];
+    [self _visitASTWithFile:file
+                 searchPath:searchPath
+                    visitor:_visitJunkCodes
+                 clientData:(__bridge void *)data];
+    
+    return [data updateContent];
 }
 
 /** 遍历某个文件的语法树 */

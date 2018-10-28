@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,7 +89,7 @@
                                 <rect key="frame" x="324" y="137" width="105" height="32"/>
                                 <buttonCell key="cell" type="push" title="1.选择目录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uQc-pA-kfF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="chooseFile:" target="XfG-lQ-9wD" id="bGW-vY-5x0"/>
@@ -137,7 +137,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="2.开始混淆" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jt8-vt-VTL">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="start:" target="XfG-lQ-9wD" id="ef3-ZE-af4"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="字符串加密" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K4o-MD-TP3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <segue destination="6RO-O1-hSl" kind="show" id="cnc-YI-PZv"/>
@@ -163,10 +163,20 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="打开目录" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fXN-ph-p4z">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="openFile:" target="XfG-lQ-9wD" id="f6A-Bv-cTo"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDB-hd-YiA">
+                                <rect key="frame" x="235" y="13" width="182" height="32"/>
+                                <buttonCell key="cell" type="push" title="代码混淆(添加无关代码)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AGP-dI-Peo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="Gel-Hy-oDr" kind="show" id="BAy-fS-Q3B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,6 +196,7 @@
                             <constraint firstItem="YaG-tb-0UA" firstAttribute="centerY" secondItem="2y4-vW-vcX" secondAttribute="centerY" id="TJS-Do-LQ8"/>
                             <constraint firstItem="mQl-KS-34d" firstAttribute="centerY" secondItem="WSf-ao-jWh" secondAttribute="centerY" id="WXJ-Mt-Cnz"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2y4-vW-vcX" secondAttribute="trailing" constant="20" symbolic="YES" id="WdZ-Fx-29w"/>
+                            <constraint firstItem="SLd-2Q-Ndg" firstAttribute="bottom" secondItem="gDB-hd-YiA" secondAttribute="bottom" id="XTX-vh-ah2"/>
                             <constraint firstItem="4h6-Kj-1OQ" firstAttribute="top" secondItem="2y4-vW-vcX" secondAttribute="bottom" constant="10" id="Ztt-JY-9VU"/>
                             <constraint firstItem="WSf-ao-jWh" firstAttribute="leading" secondItem="Voa-5b-FSv" secondAttribute="trailing" constant="10" id="byu-B4-c5z"/>
                             <constraint firstAttribute="trailing" secondItem="mQl-KS-34d" secondAttribute="trailing" constant="20" id="dkU-Ff-Zx4"/>
@@ -195,8 +206,10 @@
                             <constraint firstAttribute="trailing" secondItem="SLd-2Q-Ndg" secondAttribute="trailing" constant="20" id="lOx-6w-cNb"/>
                             <constraint firstItem="mQl-KS-34d" firstAttribute="trailing" secondItem="YaG-tb-0UA" secondAttribute="trailing" id="nKB-n9-S8T"/>
                             <constraint firstItem="nci-xS-3PR" firstAttribute="top" secondItem="4h6-Kj-1OQ" secondAttribute="bottom" constant="10" id="ob4-DE-YXb"/>
+                            <constraint firstItem="SLd-2Q-Ndg" firstAttribute="top" secondItem="gDB-hd-YiA" secondAttribute="top" id="sy8-RM-7Nj"/>
                             <constraint firstItem="YaG-tb-0UA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="wqY-8h-uwl"/>
                             <constraint firstItem="YaG-tb-0UA" firstAttribute="trailing" secondItem="4h6-Kj-1OQ" secondAttribute="trailing" id="x3q-w0-oIL"/>
+                            <constraint firstItem="SLd-2Q-Ndg" firstAttribute="leading" secondItem="gDB-hd-YiA" secondAttribute="trailing" constant="20" id="zHV-Sa-eb5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -212,6 +225,116 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="606"/>
+        </scene>
+        <!--代码混淆(添加无关代码)-->
+        <scene sceneID="pnj-CU-DrE">
+            <objects>
+                <viewController title="代码混淆(添加无关代码)" id="Gel-Hy-oDr" customClass="HGJunkCodeController" sceneMemberID="viewController">
+                    <view key="view" id="gwL-Mq-kOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="565" height="218"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kMH-QE-oVE">
+                                <rect key="frame" x="196" y="170" width="173" height="32"/>
+                                <buttonCell key="cell" type="push" title="2 打开目录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ygf-e7-o8F">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openFile:" target="Gel-Hy-oDr" id="JP5-kM-yTZ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9aR-m2-OIQ">
+                                <rect key="frame" x="377" y="170" width="174" height="32"/>
+                                <buttonCell key="cell" type="push" title="2 开始混淆" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J29-CZ-ewK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="start:" target="Gel-Hy-oDr" id="sqC-Tw-HJn"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mkv-MN-fJG">
+                                <rect key="frame" x="18" y="103" width="529" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="进度提醒" id="4Nh-o8-HBQ">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5z1-oM-UfH">
+                                <rect key="frame" x="18" y="140" width="529" height="17"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="选择目录" id="oZJ-DX-OsT">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bJG-F9-VBI">
+                                <rect key="frame" x="14" y="170" width="174" height="32"/>
+                                <buttonCell key="cell" type="push" title="1 选择文件" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QnY-B4-CNm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="chooseFile:" target="Gel-Hy-oDr" id="udc-3V-f4N"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-eP-fsd">
+                                <rect key="frame" x="18" y="66" width="529" height="17"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="混淆完毕" id="mNK-dD-Dbg">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-pQ-w8D">
+                                <rect key="frame" x="8" y="10" width="549" height="26"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="⚠️:此功能无法返回,如果在正式项目中使用,请做好代码备份,代码丢失与当前应用无关." id="8X2-ig-X8w">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Npf-pQ-w8D" secondAttribute="bottom" constant="10" id="2s3-ty-PTu"/>
+                            <constraint firstItem="Npf-pQ-w8D" firstAttribute="top" secondItem="KaX-eP-fsd" secondAttribute="bottom" constant="30" id="4ve-H6-lWk"/>
+                            <constraint firstAttribute="trailing" secondItem="KaX-eP-fsd" secondAttribute="trailing" constant="20" id="6WU-Ap-3Z1"/>
+                            <constraint firstItem="mkv-MN-fJG" firstAttribute="leading" secondItem="gwL-Mq-kOQ" secondAttribute="leading" constant="20" id="CKR-Ka-tLF"/>
+                            <constraint firstItem="9aR-m2-OIQ" firstAttribute="width" secondItem="kMH-QE-oVE" secondAttribute="width" id="CbE-Zk-ZGZ"/>
+                            <constraint firstItem="5z1-oM-UfH" firstAttribute="leading" secondItem="gwL-Mq-kOQ" secondAttribute="leading" constant="20" id="Cyt-zH-Um7"/>
+                            <constraint firstItem="Npf-pQ-w8D" firstAttribute="leading" secondItem="gwL-Mq-kOQ" secondAttribute="leading" constant="10" id="Dw5-4g-un2"/>
+                            <constraint firstItem="9aR-m2-OIQ" firstAttribute="width" secondItem="bJG-F9-VBI" secondAttribute="width" id="EN7-Ll-BlQ"/>
+                            <constraint firstItem="kMH-QE-oVE" firstAttribute="width" secondItem="bJG-F9-VBI" secondAttribute="width" id="GsQ-X3-S05"/>
+                            <constraint firstItem="kMH-QE-oVE" firstAttribute="leading" secondItem="bJG-F9-VBI" secondAttribute="trailing" constant="20" id="Jow-kO-7HZ"/>
+                            <constraint firstItem="KaX-eP-fsd" firstAttribute="top" secondItem="mkv-MN-fJG" secondAttribute="bottom" constant="20" id="R93-ks-a0z"/>
+                            <constraint firstItem="9aR-m2-OIQ" firstAttribute="leading" secondItem="kMH-QE-oVE" secondAttribute="trailing" constant="20" id="U24-0F-cXt"/>
+                            <constraint firstItem="9aR-m2-OIQ" firstAttribute="top" secondItem="gwL-Mq-kOQ" secondAttribute="top" constant="20" id="VaI-Rk-jDH"/>
+                            <constraint firstAttribute="trailing" secondItem="9aR-m2-OIQ" secondAttribute="trailing" constant="20" id="XQK-bS-fLj"/>
+                            <constraint firstAttribute="trailing" secondItem="5z1-oM-UfH" secondAttribute="trailing" constant="20" id="cCA-eQ-EVW"/>
+                            <constraint firstItem="bJG-F9-VBI" firstAttribute="leading" secondItem="gwL-Mq-kOQ" secondAttribute="leading" constant="20" id="n4t-eZ-EA6"/>
+                            <constraint firstItem="kMH-QE-oVE" firstAttribute="top" secondItem="gwL-Mq-kOQ" secondAttribute="top" constant="20" id="tjZ-Jt-UuO"/>
+                            <constraint firstItem="mkv-MN-fJG" firstAttribute="top" secondItem="5z1-oM-UfH" secondAttribute="bottom" constant="20" id="uyg-fo-AFV"/>
+                            <constraint firstItem="KaX-eP-fsd" firstAttribute="leading" secondItem="gwL-Mq-kOQ" secondAttribute="leading" constant="20" id="vMG-6m-iQH"/>
+                            <constraint firstItem="bJG-F9-VBI" firstAttribute="top" secondItem="gwL-Mq-kOQ" secondAttribute="top" constant="20" id="wfd-uj-fD6"/>
+                            <constraint firstAttribute="trailing" secondItem="Npf-pQ-w8D" secondAttribute="trailing" constant="10" id="xup-rD-kfr"/>
+                            <constraint firstItem="5z1-oM-UfH" firstAttribute="top" secondItem="kMH-QE-oVE" secondAttribute="bottom" constant="20" id="yvd-Hj-jew"/>
+                            <constraint firstAttribute="trailing" secondItem="mkv-MN-fJG" secondAttribute="trailing" constant="20" id="zG7-2m-pNI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chooseBtn" destination="bJG-F9-VBI" id="Tpa-b5-yPb"/>
+                        <outlet property="destFilepathLabel" destination="KaX-eP-fsd" id="xd0-Sj-maG"/>
+                        <outlet property="filepathLabel" destination="5z1-oM-UfH" id="Suj-5G-cwo"/>
+                        <outlet property="openBtn" destination="kMH-QE-oVE" id="qXB-B0-etV"/>
+                        <outlet property="startBtn" destination="9aR-m2-OIQ" id="IVJ-56-lvX"/>
+                        <outlet property="tipLabel" destination="mkv-MN-fJG" id="iR5-j7-aFz"/>
+                    </connections>
+                </viewController>
+                <customObject id="K6i-XQ-bwO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217.5" y="1077"/>
         </scene>
         <!--字符串加密-->
         <scene sceneID="Kri-EI-obi">
@@ -263,7 +386,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="加密" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hfI-Xj-vYn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="encrypt:" target="6RO-O1-hSl" id="AsQ-dD-JMB"/>
@@ -312,7 +435,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="1.选择目录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Psz-oq-UAm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="choose:" target="6RO-O1-hSl" id="Xe8-vr-BMl"/>
@@ -325,7 +448,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="2.开始加密" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ebJ-be-b3s">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="start:" target="6RO-O1-hSl" id="C7v-qe-f4i"/>
@@ -338,7 +461,7 @@
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="打开目录" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aOA-i7-f6I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="open:" target="6RO-O1-hSl" id="pwQ-lS-sjQ"/>
@@ -395,7 +518,7 @@
                 </viewController>
                 <customObject id="gTM-CZ-6eg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="1055"/>
+            <point key="canvasLocation" x="391" y="1115"/>
         </scene>
     </scenes>
 </document>

@@ -19,4 +19,9 @@
                             prefixes:(NSArray *)prefixes
                           searchPath:(NSString *)searchPath;
 
+/** 花指令 */
++ (BOOL)junkCodeWithFile:(NSString *)file
+                prefixes:(NSArray *)prefixes
+              searchPath:(NSString *)searchPath;
+
 @end

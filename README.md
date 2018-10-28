@@ -180,3 +180,6 @@ NSLog(@"%@ %s", str1, str2);
 // 打印结果如下
 小码哥mj123go 小码哥mj123go
 ```
+
+
+关于[代码混淆（添加无用代码）] 的入口,请看这篇简书介绍: [代码混淆之  libclang.dylib 应用](https://www.jianshu.com/p/81a61f5d6948)

@@ -21,6 +21,7 @@
 @property (weak) IBOutlet NSTextField *destFilepathLabel;
 @property (weak) IBOutlet NSTextField *tipLabel;
 @property (weak) IBOutlet NSTextField *prefixFiled;
+
 @end
 
 @implementation MJCodeViewController
